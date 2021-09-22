@@ -3,6 +3,7 @@
 *.AppImage
 /lotus
 /lotus-miner
+/lotus-shadow-miner
 /lotus-worker
 /lotus-seed
 /lotus-health
