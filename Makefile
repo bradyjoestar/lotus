@@ -98,6 +98,14 @@ lotus-miner: $(BUILD_DEPS)
 .PHONY: lotus-miner
 BINS+=lotus-miner
 
+
+lotus-shadow-miner: $(BUILD_DEPS)
+	rm -f lotus-shadow-miner
+	$(GOCC) build $(GOFLAGS) -o lotus-shadow-miner ./cmd/lotus-shadow-miner
+.PHONY: lotus-shadow-miner
+BINS+=lotus-shadow-miner
+
+
 lotus-worker: $(BUILD_DEPS)
 	rm -f lotus-worker
 	$(GOCC) build $(GOFLAGS) -o lotus-worker ./cmd/lotus-seal-worker
@@ -116,7 +124,7 @@ lotus-gateway: $(BUILD_DEPS)
 .PHONY: lotus-gateway
 BINS+=lotus-gateway
 
-build: lotus lotus-miner lotus-worker
+build: lotus lotus-miner lotus-shadow-miner lotus-worker
 	@[[ $$(type -P "lotus") ]] && echo "Caution: you have \
 an existing lotus binary in your PATH. This may cause problems if you don't run 'sudo make install'" || true
 
